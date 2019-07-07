@@ -6,7 +6,7 @@ before_install:
   - docker build -t artemshaleyko/react-test -f ./client/Dockerfile.dev ./client
 
 script:
-  - docker run artemshaleyko/react-test npm test -- --coverage
+  - docker run -e CI=true artemshaleyko/react-test npm test
 
 after_success:
   - docker build -t artemshaleyko/multi-client ./client
